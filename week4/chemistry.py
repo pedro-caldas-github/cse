@@ -1,3 +1,5 @@
+from formula import parse_formula, FormulaError
+
 def make_periodic_table():
     elements_list = [
         "Ac,Actinium,227", "Ag,Silver,107.8682", "Al,Aluminum,26.9815386",
@@ -45,22 +47,59 @@ def make_periodic_table():
 
     return periodic_table_dict
 
-def make_periodic_table():
-    a = 1
 
+def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
+    SYMBOL_INDEX = 0
+    QUANTITY_INDEX = 1
+    
+    ATOMIC_MASS_INDEX = 1
+    
+    molar_mass = 0.0
 
+    for element_data in symbol_quantity_list:
+        symbol = element_data[SYMBOL_INDEX]
+        quantity = element_data[QUANTITY_INDEX]
 
-def compute_molar_mass():
-    b = 2
+        atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]
+
+        element_mass = atomic_mass * quantity
+
+        molar_mass += element_mass
+
+    return molar_mass
 
 
 def main():
     periodic_table = make_periodic_table()
-    import pprint
-    pprint.pprint(periodic_table)
+
+    while True:
+        try:
+            chemical_formula = input("Enter the chemical formula (e.g., C6H12O6): ").strip()
+            symbol_quantity_list = parse_formula(chemical_formula, periodic_table)
+            break
+        except FormulaError as e:
+            print(f"Formula Error: {e.args[0]}. Please try again.")
+        
+    while True:
+        try:
+            sample_mass = float(input("Enter the sample mass in grams (e.g., 12.37): "))
+            if sample_mass <= 0:
+                print("The mass must be a positive value.")
+            else:
+                break
+        except ValueError:
+            print("Invalid input. Please enter a number for the sample mass.")
+
+
+    molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table)
+
+    amount_of_moles = sample_mass / molar_mass
+
+    print("\n## Chemical Calculation Results 🧪")
+    print("---")
+    print(f"Molar Mass of {chemical_formula}: **{molar_mass:.5f}** grams/mole")
+    print(f"Amount of Moles in Sample: **{amount_of_moles:.5f}** moles")
 
 
 if __name__ == "__main__":
     main()
-
-    # teste
