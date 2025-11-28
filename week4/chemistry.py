@@ -45,6 +45,14 @@ def make_periodic_table():
 
     return periodic_table_dict
 
+def make_periodic_table():
+    a = 1
+
+
+
+def compute_molar_mass():
+    b = 2
+
 
 def main():
     periodic_table = make_periodic_table()
