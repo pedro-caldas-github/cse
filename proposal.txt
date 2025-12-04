@@ -1,0 +1,37 @@
+CSE 111 Proposal for a Student Chosen Program
+
+1. What is the title of your program?
+
+Data Analysis and Visualization with Pandas.
+
+2. What real-world problem will your program address or help to solve?
+
+The program will address the need to extract clear, visual insights from large volumes of public data witch is a daily strugge for data analysts. The program will help transform raw data into comprehensible charts and tables to assist in decision-making or understanding trends.
+
+3. What will you learn from developing this program?
+
+I will gain a deeper understanding of the data analysis lifecycle in Python, including:
+
+Efficiently reading and cleaning raw data using the pandas library.
+Applying data transformations to perform specific analyses (aggregation, filtering, metric calculation).
+Creating meaningful data visualizations (bar, line, scatter charts) using a plotting library.
+
+4. What Python modules will your program use?
+
+pandas: For data manipulation and analysis.
+matplotlib: For creating charts and visualizations.
+csv: If necessary to work with CSV files in a more granular way.
+pytest: To test the code
+
+5. List the names of functions you will need?
+
+read_data(file_path)
+clean_data(df):
+analyze_and_transform(df, column_name): 
+create_chart(df, x_col, y_col, chart_type, title, file_path)
+main()
+
+6. List the names of the test functions you will write.
+
+test_clean_data() 
+test_analyze_and_transform()
